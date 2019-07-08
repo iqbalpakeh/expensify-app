@@ -1,42 +1,89 @@
 import { createStore, combineReducers } from "redux";
+import uuid from "uuid";
 
+// -------------------------------------------------
 // ADD_EXPENSE
-// REMOVE_EXPENSE
-// EDIT_EXPENSE
-// SET_TEXT_FILTER
-// SORT_BY_DATE
-// SORT_BY_AMOUNT
-// SET_START_DATE
-// SET_END_DATE
+// -------------------------------------------------
 
-// Expense Reducer
+const addExpense = ({
+	description = "",
+	note = "",
+	amount = 0,
+	createdAt = 0
+} = {}) => ({
+	type: "ADD_EXPENSE",
+	expense: {
+		id: uuid(),
+		description,
+		note,
+		amount,
+		createdAt
+	}
+});
+// -------------------------------------------------
+// REMOVE_EXPENSE
+// -------------------------------------------------
+
+// -------------------------------------------------
+// EDIT_EXPENSE
+// -------------------------------------------------
+
+// -------------------------------------------------
+// SET_TEXT_FILTER
+// -------------------------------------------------
+
+// -------------------------------------------------
+// SORT_BY_DATE
+// -------------------------------------------------
+
+// -------------------------------------------------
+// SORT_BY_AMOUNT
+// -------------------------------------------------
+
+// -------------------------------------------------
+// SET_START_DATE
+// -------------------------------------------------
+
+// -------------------------------------------------
+// SET_END_DATE
+// -------------------------------------------------
+
+// -------------------------------------------------
+// EXPENSE REDUCER
+// -------------------------------------------------
 
 const expensesReducerDefaultState = [];
 
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
 	switch (action.type) {
+		case "ADD_EXPENSE":
+			return state.concat(action.expense);
 		default:
 			return state;
 	}
 };
 
-// Filters Reducers
+// -------------------------------------------------
+// FILTER REDUCER
+// -------------------------------------------------
 
-const filtersReducersDefaultState = {
+const filtersReducerDefaultState = {
 	text: "",
 	sortBy: "date", // date or amount
 	startDate: undefined,
 	endDate: undefined
 };
 
-const filtersReducer = (state = filtersReducersDefaultState, action) => {
+const filtersReducer = (state = filtersReducerDefaultState, action) => {
 	switch (action.type) {
 		default:
 			return state;
 	}
 };
 
-// Store creation
+// -------------------------------------------------
+// STORE CREATION
+// -------------------------------------------------
 
 const store = createStore(
 	combineReducers({
@@ -45,7 +92,19 @@ const store = createStore(
 	})
 );
 
-console.log(store.getState());
+store.subscribe(() => {
+	console.log(store.getState());
+});
+
+// -------------------------------------------------
+// MAIN()
+// -------------------------------------------------
+
+store.dispatch(addExpense({ description: "rent", amount: 100 }));
+
+// -------------------------------------------------
+// DUMMY DATA
+// -------------------------------------------------
 
 const demoState = {
 	expense: [
@@ -53,7 +112,7 @@ const demoState = {
 			id: "qwertylkjlkjp",
 			description: "January rent",
 			note: "This was the final payment for that address",
-			amount: 54500, // in penny
+			amount: 54500, // in penny to avoid comma operation
 			createdAt: 0
 		}
 	],
