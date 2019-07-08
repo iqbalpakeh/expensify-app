@@ -22,7 +22,12 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
 
 // Filters Reducers
 
-const filtersReducersDefaultState = [];
+const filtersReducersDefaultState = {
+	text: "",
+	sortBy: "date", // date or amount
+	startDate: undefined,
+	endDate: undefined
+};
 
 const filtersReducers = (state = filtersReducersDefaultState, action) => {
 	switch (action.type) {
