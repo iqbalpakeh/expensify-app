@@ -29,7 +29,7 @@ const filtersReducersDefaultState = {
 	endDate: undefined
 };
 
-const filtersReducers = (state = filtersReducersDefaultState, action) => {
+const filtersReducer = (state = filtersReducersDefaultState, action) => {
 	switch (action.type) {
 		default:
 			return state;
@@ -41,7 +41,7 @@ const filtersReducers = (state = filtersReducersDefaultState, action) => {
 const store = createStore(
 	combineReducers({
 		expense: expensesReducer,
-		filters: filtersReducers
+		filters: filtersReducer
 	})
 );
 
