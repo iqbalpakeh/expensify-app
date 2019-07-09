@@ -25,7 +25,7 @@ const addExpense = ({
 // REMOVE_EXPENSE
 // -------------------------------------------------
 
-const removeExpense = ({ id }) => ({
+const removeExpense = ({ id } = {}) => ({
 	type: "REMOVE_EXPENSE",
 	id
 });
@@ -71,9 +71,7 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
 		case "ADD_EXPENSE":
 			return [...state, action.expense];
 		case "REMOVE_EXPENSE":
-			return state.filter(expense => {
-				return expense.id !== action.id;
-			});
+			return state.filter(({ id }) => id !== action.id);
 		default:
 			return state;
 	}
