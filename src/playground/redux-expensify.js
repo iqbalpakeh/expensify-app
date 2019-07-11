@@ -44,6 +44,11 @@ const editExpense = (id, updates) => ({
 // SET_TEXT_FILTER
 // -------------------------------------------------
 
+const setTextFilter = (text = "") => ({
+	type: "SET_TEXT_FILTER",
+	text
+});
+
 // -------------------------------------------------
 // SORT_BY_DATE
 // -------------------------------------------------
@@ -65,12 +70,6 @@ const editExpense = (id, updates) => ({
 // -------------------------------------------------
 
 const expensesReducerDefaultState = [];
-
-// 	handleDeleteOption = optionToRemove => {
-// 	this.setState(prevState => ({
-// 		options: prevState.options.filter(option => optionToRemove !== option)
-// 	}));
-// };
 
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
 	switch (action.type) {
@@ -104,6 +103,11 @@ const filtersReducerDefaultState = {
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
 	switch (action.type) {
+		case "SET_TEXT_FILTER":
+			return {
+				...state,
+				text: action.text
+			};
 		default:
 			return state;
 	}
@@ -140,7 +144,8 @@ store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
 store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }));
 
-// console.log(expenseTwo);
+store.dispatch(setTextFilter("rent"));
+store.dispatch(setTextFilter());
 
 // -------------------------------------------------
 // DUMMY DATA
@@ -169,8 +174,8 @@ const user = {
 	age: 24
 };
 
-console.log({
-	...user,
-	location: "Singapore",
-	name: "Jon"
-});
+// console.log({
+// 	...user,
+// 	location: "Singapore",
+// 	name: "Jon"
+// });
