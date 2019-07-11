@@ -69,7 +69,7 @@ const sortByAmount = () => ({
 // SET_START_DATE
 // -------------------------------------------------
 
-const setStartDate = (startDate = undefined) => ({
+const setStartDate = startDate => ({
 	type: "SET_START_DATE",
 	startDate
 });
