@@ -2,7 +2,7 @@ import { createStore, combineReducers } from "redux";
 import uuid from "uuid";
 
 // -------------------------------------------------
-// ADD_EXPENSE
+// ACTION ADD_EXPENSE
 // -------------------------------------------------
 
 const addExpense = ({
@@ -22,7 +22,7 @@ const addExpense = ({
 });
 
 // -------------------------------------------------
-// REMOVE_EXPENSE
+// ACTION REMOVE_EXPENSE
 // -------------------------------------------------
 
 const removeExpense = ({ id } = {}) => ({
@@ -31,7 +31,7 @@ const removeExpense = ({ id } = {}) => ({
 });
 
 // -------------------------------------------------
-// EDIT_EXPENSE
+// ACTION EDIT_EXPENSE
 // -------------------------------------------------
 
 const editExpense = (id, updates) => ({
@@ -41,7 +41,7 @@ const editExpense = (id, updates) => ({
 });
 
 // -------------------------------------------------
-// SET_TEXT_FILTER
+// ACTION SET_TEXT_FILTER
 // -------------------------------------------------
 
 const setTextFilter = (text = "") => ({
@@ -50,7 +50,7 @@ const setTextFilter = (text = "") => ({
 });
 
 // -------------------------------------------------
-// SORT_BY_DATE
+// ACTION SORT_BY_DATE
 // -------------------------------------------------
 
 const sortByDate = () => ({
@@ -58,7 +58,7 @@ const sortByDate = () => ({
 });
 
 // -------------------------------------------------
-// SORT_BY_AMOUNT
+// ACTION SORT_BY_AMOUNT
 // -------------------------------------------------
 
 const sortByAmount = () => ({
@@ -66,7 +66,7 @@ const sortByAmount = () => ({
 });
 
 // -------------------------------------------------
-// SET_START_DATE
+// ACTION SET_START_DATE
 // -------------------------------------------------
 
 const setStartDate = startDate => ({
@@ -75,7 +75,7 @@ const setStartDate = startDate => ({
 });
 
 // -------------------------------------------------
-// SET_END_DATE
+// ACTION SET_END_DATE
 // -------------------------------------------------
 
 const setEndDate = endDate => ({
@@ -197,7 +197,7 @@ store.subscribe(() => {
 });
 
 // -------------------------------------------------
-// MAIN()
+// MAIN
 // -------------------------------------------------
 
 const expenseOne = store.dispatch(
@@ -212,7 +212,7 @@ const expenseTwo = store.dispatch(
 
 // store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }));
 
-store.dispatch(setTextFilter("ent"));
+// store.dispatch(setTextFilter("ent"));
 // store.dispatch(setTextFilter());
 
 // store.dispatch(sortByAmount());
