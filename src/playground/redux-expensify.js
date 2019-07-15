@@ -160,23 +160,32 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
 };
 
 // -------------------------------------------------
-// GET VISIBLE EXPENSE
+// UTIL FUNCTION: GET VISIBLE EXPENSE
 // -------------------------------------------------
 
 const getVisibleExpense = (expenses, { text, sortBy, startDate, endDate }) => {
-	return expenses.filter(expense => {
-		const startDateMatch =
-			typeof startDate !== "number" || expense.createdAt >= startDate;
+	return expenses
+		.filter(expense => {
+			const startDateMatch =
+				typeof startDate !== "number" || expense.createdAt >= startDate;
 
-		const endDateMatch =
-			typeof endDate !== "number" || expense.createdAt <= endDate;
+			const endDateMatch =
+				typeof endDate !== "number" || expense.createdAt <= endDate;
 
-		const textMatch = expense.description
-			.toLowerCase()
-			.includes(text.toLowerCase());
+			const textMatch = expense.description
+				.toLowerCase()
+				.includes(text.toLowerCase());
 
-		return startDateMatch && endDateMatch && textMatch;
-	});
+			return startDateMatch && endDateMatch && textMatch;
+		})
+		.sort((a, b) => {
+			if (sortBy === "date") {
+				return a.createdAt < b.createdAt ? 1 : -1;
+			}
+			if (sortBy === "amount") {
+				return a.amount < b.amount ? 1 : -1;
+			}
+		});
 };
 
 // -------------------------------------------------
@@ -194,6 +203,7 @@ store.subscribe(() => {
 	const state = store.getState();
 	const visibleExpenses = getVisibleExpense(state.expenses, state.filters);
 	console.log(visibleExpenses);
+	console.log(state);
 });
 
 // -------------------------------------------------
@@ -201,7 +211,7 @@ store.subscribe(() => {
 // -------------------------------------------------
 
 const expenseOne = store.dispatch(
-	addExpense({ description: "rent", amount: 100, createdAt: 1000 })
+	addExpense({ description: "rent", amount: 100, createdAt: -21000 })
 );
 
 const expenseTwo = store.dispatch(
@@ -215,7 +225,7 @@ const expenseTwo = store.dispatch(
 // store.dispatch(setTextFilter("ent"));
 // store.dispatch(setTextFilter());
 
-// store.dispatch(sortByAmount());
+store.dispatch(sortByAmount());
 // store.dispatch(sortByDate());
 
 // store.dispatch(setStartDate(0));
