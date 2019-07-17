@@ -12,17 +12,18 @@ import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 
 const store = configureStore();
-console.log(store.getState());
+// console.log(store.getState());
 
-store.dispatch(addExpense({ description: "Water bill" }));
+store.dispatch(addExpense({ description: "Water bill", amount: 4500 }));
 store.dispatch(addExpense({ description: "Gas bill" }));
 store.dispatch(setTextFilter("water"));
 
 const state = store.getState();
-console.log(getVisibleExpenses(state.expenses, state.filters));
+console.log(store.getState());
+// console.log(getVisibleExpenses(state.expenses, state.filters));
 
 setTimeout(() => {
-	store.dispatch(setTextFilter("rent"));
+	store.dispatch(setTextFilter("bill"));
 }, 3000);
 
 const jsx = (
