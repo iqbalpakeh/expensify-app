@@ -8,7 +8,6 @@ const ExpenseListFilters = props => (
 			type="text"
 			value={props.filters.text}
 			onChange={e => {
-				console.log(e.target.value);
 				props.dispatch(setTextFilter(e.target.value));
 			}}
 		/>
