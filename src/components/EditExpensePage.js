@@ -15,8 +15,7 @@ const EditExpensePage = props => {
 			/>
 			<button
 				onClick={e => {
-					const id = props.expense.id;
-					props.dispatch(removeExpense({ id }));
+					props.dispatch(removeExpense({ id: props.expense.id }));
 					props.history.push("/");
 				}}
 			>
