@@ -1,3 +1,4 @@
+import moment from "moment";
 import {
 	setTextFilter,
 	sortByDate,
@@ -37,17 +38,17 @@ test("should setup sortByAmount action object", () => {
 });
 
 test("should setup setStartDate action object", () => {
-	const action = setStartDate(1000);
+	const action = setStartDate(moment(0));
 	expect(action).toEqual({
 		type: "SET_START_DATE",
-		startDate: 1000
+		startDate: moment(0)
 	});
 });
 
 test("should setup setEndDate action object", () => {
-	const action = setEndDate(1000);
+	const action = setEndDate(moment(0));
 	expect(action).toEqual({
 		type: "SET_END_DATE",
-		endDate: 1000
+		endDate: moment(0)
 	});
 });
