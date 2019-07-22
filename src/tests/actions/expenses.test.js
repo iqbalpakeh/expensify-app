@@ -1,3 +1,6 @@
+// to run jest from console:
+//    $ yarn test -- --watch
+
 import { addExpense, removeExpense, editExpense } from "../../actions/expenses";
 
 test("should setup remove expense action object", () => {
