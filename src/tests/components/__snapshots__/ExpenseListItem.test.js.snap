@@ -3,12 +3,16 @@
 exports[`should render ExpenseListItem with expenses[0] 1`] = `
 <div>
   <Link
-    to="/edit/undefined"
+    to="/edit/1"
   >
-    <h3 />
+    <h3>
+      Gum
+    </h3>
   </Link>
   <p>
+    195
      - 
+    0
   </p>
 </div>
 `;
