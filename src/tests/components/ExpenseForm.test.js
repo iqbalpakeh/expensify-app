@@ -26,5 +26,46 @@ test("should render error for invalid subsmission form", () => {
 });
 
 test("should set description on input change", () => {
-	//
+	const value = "new description";
+	const wrapper = shallow(<ExpenseForm />);
+	wrapper
+		.find("input")
+		.at(0)
+		.simulate("change", {
+			target: { value }
+		});
+	expect(wrapper.state("description")).toBe(value);
+});
+
+test("should set note on textarea change", () => {
+	const value = "new note value";
+	const wrapper = shallow(<ExpenseForm />);
+	wrapper.find("textarea").simulate("change", {
+		target: { value }
+	});
+	expect(wrapper.state("note")).toBe(value);
+});
+
+test("should set amount if valid input (23.50)", () => {
+	const value = "23.50";
+	const wrapper = shallow(<ExpenseForm />);
+	wrapper
+		.find("input")
+		.at(1)
+		.simulate("change", {
+			target: { value }
+		});
+	expect(wrapper.state("amount")).toBe(value);
+});
+
+test("should not set amount if invalid input (12.122)", () => {
+	const value = "12.122";
+	const wrapper = shallow(<ExpenseForm />);
+	wrapper
+		.find("input")
+		.at(1)
+		.simulate("change", {
+			target: { value }
+		});
+	expect(wrapper.state("amount")).toBe("");
 });
