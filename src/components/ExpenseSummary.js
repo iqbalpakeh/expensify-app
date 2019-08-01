@@ -9,9 +9,9 @@ export const ExpenseSummary = props => {
 	const formattedAmount = numeral(amount / 100).format("$0,0.00");
 	return (
 		<div>
-			<p>
+			<h1>
 				Viewing {props.expenses.length} totaling {formattedAmount}
-			</p>
+			</h1>
 		</div>
 	);
 };

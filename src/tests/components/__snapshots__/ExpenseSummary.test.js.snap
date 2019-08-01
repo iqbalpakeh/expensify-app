@@ -2,22 +2,22 @@
 
 exports[`should render 1 expenses correctly 1`] = `
 <div>
-  <p>
+  <h1>
     Viewing 
     1
      totaling 
     $1.95
-  </p>
+  </h1>
 </div>
 `;
 
 exports[`should render 2 expenses correctly 1`] = `
 <div>
-  <p>
+  <h1>
     Viewing 
     2
      totaling 
     $1,096.95
-  </p>
+  </h1>
 </div>
 `;
