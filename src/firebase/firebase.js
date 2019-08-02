@@ -13,20 +13,36 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-database.ref().set({
-	name: "Iqbal Pakeh",
-	age: 34,
-	isSingle: false,
-	location: {
-		city: "Singapore",
-		state: "Singapore"
-	}
-});
+database
+	.ref()
+	.set({
+		name: "Iqbal Pakeh",
+		age: 34,
+		isSingle: false,
+		location: {
+			city: "Singapore",
+			state: "Singapore"
+		}
+	})
+	.then(() => {
+		console.log("Data is saved!");
+	})
+	.catch(error => {
+		console.log("This failed", error);
+	});
 
-database.ref("age").set(27);
-database.ref("location/city").set("Batam");
+// database.ref("age").set(27);
+// database.ref("location/city").set("Batam");
 
-database.ref("attributes").set({
-	height: 168,
-	weight: 74
-});
+database
+	.ref("attributes")
+	.set({
+		height: 168,
+		weight: 74
+	})
+	.then(() => {
+		console.log("Data (height and weight) is saved!");
+	})
+	.catch(error => {
+		console.log("ERROR>>", error);
+	});
