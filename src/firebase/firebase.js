@@ -31,18 +31,22 @@ database
 		console.log("This failed", error);
 	});
 
-// database.ref("age").set(27);
-// database.ref("location/city").set("Batam");
-
 database
-	.ref("attributes")
-	.set({
-		height: 168,
-		weight: 74
-	})
+	.ref("isSingle")
+	.remove()
 	.then(() => {
-		console.log("Data (height and weight) is saved!");
+		console.log("Data is removed!");
 	})
-	.catch(error => {
-		console.log("ERROR>>", error);
+	.catch(e => {
+		console.log("Error: ", e);
 	});
+
+// database
+// 	.ref("isSingle")
+// 	.set(null)
+// 	.then(() => {
+// 		console.log("Data is removed!");
+// 	})
+// 	.catch(e => {
+// 		console.log("Error: ", e);
+// 	});
