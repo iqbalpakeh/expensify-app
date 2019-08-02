@@ -11,11 +11,22 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
-// dummy testing the database connection
-firebase
-	.database()
-	.ref()
-	.set({
-		name: "Iqbal Pakeh"
-	});
+database.ref().set({
+	name: "Iqbal Pakeh",
+	age: 34,
+	isSingle: false,
+	location: {
+		city: "Singapore",
+		state: "Singapore"
+	}
+});
+
+database.ref("age").set(27);
+database.ref("location/city").set("Batam");
+
+database.ref("attributes").set({
+	height: 168,
+	weight: 74
+});
