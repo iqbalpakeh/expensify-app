@@ -18,7 +18,11 @@ database
 	.set({
 		name: "Iqbal Pakeh",
 		age: 34,
-		isSingle: false,
+		stressLevel: 6,
+		job: {
+			title: "Software developer",
+			company: "Google"
+		},
 		location: {
 			city: "Singapore",
 			state: "Singapore"
@@ -32,18 +36,22 @@ database
 	});
 
 database
-	.ref("isSingle")
-	.remove()
+	.ref()
+	.update({
+		stressLevel: 9,
+		"job/company": "Amazon",
+		"location/city": "Seattle"
+	})
 	.then(() => {
-		console.log("Data is removed!");
+		console.log("Data is updated!");
 	})
 	.catch(e => {
-		console.log("Error: ", e);
+		console.log("This failed", error);
 	});
 
 // database
 // 	.ref("isSingle")
-// 	.set(null)
+// 	.remove()
 // 	.then(() => {
 // 		console.log("Data is removed!");
 // 	})
