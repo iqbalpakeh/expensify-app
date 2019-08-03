@@ -20,24 +20,25 @@ const database = firebase.database();
 const onValueChange = database.ref().on(
 	"value",
 	snapshot => {
-		console.log(snapshot.val());
+		const val = snapshot.val();
+		console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
 	},
 	e => {
 		console.log("Error with data fetching", e);
 	}
 );
 
-setTimeout(() => {
-	database.ref("age").set(29);
-}, 3500);
+// setTimeout(() => {
+// 	database.ref("age").set(29);
+// }, 3500);
 
-setTimeout(() => {
-	database.ref().off("value", onValueChange);
-}, 7000);
+// setTimeout(() => {
+// 	database.ref().off("value", onValueChange);
+// }, 7000);
 
-setTimeout(() => {
-	database.ref("age").set(30);
-}, 10500);
+// setTimeout(() => {
+// 	database.ref("age").set(30);
+// }, 10500);
 
 // database
 // 	.ref("location/city")
