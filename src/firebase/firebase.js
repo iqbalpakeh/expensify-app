@@ -14,19 +14,58 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
 // -----------------------------------------------------------------
+// ARRAY DATA
+// -----------------------------------------------------------------
+
+// database.ref("expenses").push({
+// 	description: "rent #1",
+// 	note: "rent aug",
+// 	amount: "1500",
+// 	createdAt: 1000
+// });
+
+// database.ref("expenses").push({
+// 	description: "rent #2",
+// 	note: "rent sep",
+// 	amount: "1500",
+// 	createdAt: 1000
+// });
+
+// database.ref("expenses").push({
+// 	description: "rent #3",
+// 	note: "rent okt",
+// 	amount: "1500",
+// 	createdAt: 1000
+// });
+
+// database.ref("notes/-LlONwLHw17YhQZ6_q4-").update({
+// 	body: "Buy food"
+// });
+
+// database.ref("notes").push({
+// 	title: "To Do",
+// 	body: "Go for a run"
+// });
+
+// database.ref("notes").push({
+// 	title: "Courses",
+// 	body: "Web Dev"
+// });
+
+// -----------------------------------------------------------------
 // READ DATA
 // -----------------------------------------------------------------
 
-const onValueChange = database.ref().on(
-	"value",
-	snapshot => {
-		const val = snapshot.val();
-		console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
-	},
-	e => {
-		console.log("Error with data fetching", e);
-	}
-);
+// const onValueChange = database.ref().on(
+// 	"value",
+// 	snapshot => {
+// 		const val = snapshot.val();
+// 		console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
+// 	},
+// 	e => {
+// 		console.log("Error with data fetching", e);
+// 	}
+// );
 
 // setTimeout(() => {
 // 	database.ref("age").set(29);
