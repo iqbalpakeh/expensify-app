@@ -13,41 +13,90 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 
-database
-	.ref()
-	.set({
-		name: "Iqbal Pakeh",
-		age: 34,
-		stressLevel: 6,
-		job: {
-			title: "Software developer",
-			company: "Google"
-		},
-		location: {
-			city: "Singapore",
-			state: "Singapore"
-		}
-	})
-	.then(() => {
-		console.log("Data is saved!");
-	})
-	.catch(error => {
-		console.log("This failed", error);
-	});
+// -----------------------------------------------------------------
+// READ DATA
+// -----------------------------------------------------------------
 
-database
-	.ref()
-	.update({
-		stressLevel: 9,
-		"job/company": "Amazon",
-		"location/city": "Seattle"
-	})
-	.then(() => {
-		console.log("Data is updated!");
-	})
-	.catch(e => {
-		console.log("This failed", error);
-	});
+const onValueChange = database.ref().on(
+	"value",
+	snapshot => {
+		console.log(snapshot.val());
+	},
+	e => {
+		console.log("Error with data fetching", e);
+	}
+);
+
+setTimeout(() => {
+	database.ref("age").set(29);
+}, 3500);
+
+setTimeout(() => {
+	database.ref().off("value", onValueChange);
+}, 7000);
+
+setTimeout(() => {
+	database.ref("age").set(30);
+}, 10500);
+
+// database
+// 	.ref("location/city")
+// 	.once("value")
+// 	.then(snapshot => {
+// 		const val = snapshot.val();
+// 		console.log(val);
+// 	})
+// 	.catch(e => {
+// 		console.log("Error", e);
+// 	});
+
+// -----------------------------------------------------------------
+// CREATE DATA
+// -----------------------------------------------------------------
+
+// database
+// 	.ref()
+// 	.set({
+// 		name: "Iqbal Pakeh",
+// 		age: 34,
+// 		stressLevel: 6,
+// 		job: {
+// 			title: "Software developer",
+// 			company: "Google"
+// 		},
+// 		location: {
+// 			city: "Singapore",
+// 			state: "Singapore"
+// 		}
+// 	})
+// 	.then(() => {
+// 		console.log("Data is saved!");
+// 	})
+// 	.catch(error => {
+// 		console.log("This failed", error);
+// 	});
+
+// -----------------------------------------------------------------
+// UPDATE DATA
+// -----------------------------------------------------------------
+
+// database
+// 	.ref()
+// 	.update({
+// 		stressLevel: 9,
+// 		"job/company": "Amazon",
+// 		"location/city": "Seattle"
+// 	})
+// 	.then(() => {
+// 		console.log("Data is updated!");
+// 	})
+// 	.catch(e => {
+// 		console.log("This failed", error);
+// 	});
+
+// -----------------------------------------------------------------
+// REMOVE DATA
+// -----------------------------------------------------------------
 
 // database
 // 	.ref("isSingle")
