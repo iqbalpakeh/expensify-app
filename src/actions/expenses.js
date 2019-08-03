@@ -1,6 +1,19 @@
 import uuid from "uuid";
 
 // -------------------------------------------------
+// Before firebase integration:
+// 1. Action generator returns object
+// 2. Component dispatches object
+// 3. Redux store changes
+//
+// After firebase integration:
+// 1. Action generator returns function
+// 2. Component dispatches function (?)
+// 3. Function runs (has the ability to dispatch other actions and do whatever it wants)
+//
+// -------------------------------------------------
+
+// -------------------------------------------------
 // ACTION ADD_EXPENSE
 // -------------------------------------------------
 
