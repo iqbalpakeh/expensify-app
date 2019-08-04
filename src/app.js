@@ -11,7 +11,7 @@ import "react-dates/lib/css/_datepicker.css";
 import "./firebase/firebase";
 
 // debug import
-import { addExpense } from "./actions/expenses";
+import { startAddExpense } from "./actions/expenses";
 import { setTextFilter } from "./actions/filters";
 import getVisibleExpenses from "./selectors/expenses";
 // import "./playground/promises";
@@ -19,9 +19,9 @@ import getVisibleExpenses from "./selectors/expenses";
 const store = configureStore();
 
 // debug code
-store.dispatch(addExpense({ description: "Water bill", amount: 4500 }));
-store.dispatch(addExpense({ description: "Gas bill", createdAt: 1000 }));
-store.dispatch(addExpense({ description: "Rent", amount: 109500 }));
+store.dispatch(startAddExpense({ description: "Water bill", amount: 4500 }));
+store.dispatch(startAddExpense({ description: "Gas bill", createdAt: 1000 }));
+store.dispatch(startAddExpense({ description: "Rent", amount: 109500 }));
 const state = store.getState();
 console.log(getVisibleExpenses(state.expenses, state.filters));
 
