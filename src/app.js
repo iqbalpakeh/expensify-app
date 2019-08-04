@@ -8,6 +8,9 @@ import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
 import "./firebase/firebase";
 
+// debug
+// import "./playground/promises";
+
 const store = configureStore();
 
 const jsx = (
