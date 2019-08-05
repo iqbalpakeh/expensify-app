@@ -7,7 +7,8 @@ import {
 	startAddExpense,
 	addExpense,
 	removeExpense,
-	editExpense
+	editExpense,
+	setExpenses
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import database from "../../firebase/firebase";
@@ -106,4 +107,12 @@ test("should add expense with defaults to database and store", done => {
 			expect(snapshot.val()).toEqual(defaultExpenseData);
 			done();
 		});
+});
+
+test("should setup set expense action object with data", () => {
+	const action = setExpenses(expenses);
+	expect(action).toEqual({
+		type: "SET_EXPENSES",
+		expenses
+	});
 });
