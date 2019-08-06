@@ -9,9 +9,9 @@ import {
 	removeExpense,
 	startRemoveExpense,
 	editExpense,
+	startEditExpense,
 	setExpenses,
-	startSetExpenses,
-	startEditExpense
+	startSetExpenses
 } from "../../actions/expenses";
 import expenses from "../fixtures/expenses";
 import database from "../../firebase/firebase";
@@ -83,7 +83,7 @@ test("should setup edit expense action object", () => {
 
 test("should edit expenses from firebase", done => {
 	const store = createMockStore({});
-	const id = expenses[2].id;
+	const id = expenses[0].id;
 	const updates = { description: "New Credit Card" };
 	store
 		.dispatch(startEditExpense(id, updates))
@@ -94,10 +94,10 @@ test("should edit expenses from firebase", done => {
 				id,
 				updates
 			});
-			return database.ref(`expenses/${id}/description`).once("value");
+			return database.ref(`expenses/${id}`).once("value");
 		})
 		.then(snapshot => {
-			expect(snapshot.val()).toBe("New Credit Card");
+			expect(snapshot.val().description).toBe(updates.description);
 			done();
 		});
 });
