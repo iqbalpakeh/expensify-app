@@ -137,7 +137,7 @@ test("should remove expense from firebase", done => {
 		const actions = store.getActions();
 		expect(actions[0]).toEqual({
 			type: "REMOVE_EXPENSE",
-			id: expense[1].id
+			id: expenses[1].id
 		});
 		done();
 	});
