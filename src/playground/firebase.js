@@ -1,12 +1,7 @@
 import * as firebase from "firebase";
 
 const firebaseConfig = {
-	authDomain: "expensify-app-ec7bb.firebaseapp.com",
-	databaseURL: "https://expensify-app-ec7bb.firebaseio.com",
-	projectId: "expensify-app-ec7bb",
-	storageBucket: "",
-	messagingSenderId: "490139563764",
-	appId: "1:490139563764:web:0743900e03417900"
+	// configuration from Firebase is here!!
 };
 
 firebase.initializeApp(firebaseConfig);
