@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import AppRouter from "./routers/AppRouter";
+import AppRouter, { history } from "./routers/AppRouter";
 import configureStore from "./store/configureStore";
 import { startSetExpenses } from "./actions/expenses";
 import "normalize.css/normalize.css";
@@ -26,7 +26,9 @@ store.dispatch(startSetExpenses()).then(() => {
 firebase.auth().onAuthStateChanged(user => {
 	if (user) {
 		console.log("Log in");
+		// do something here
 	} else {
 		console.log("Log out");
+		// history.push("/"); // continue video @ 06:07
 	}
 });
