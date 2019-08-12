@@ -11,6 +11,19 @@ import "react-dates/lib/css/_datepicker.css";
 import { firebase } from "./firebase/firebase";
 import LoadingPage from "./components/LoadingPage";
 
+// -------------------------------------------------
+//
+// IMPROVEMENT LIST:
+//
+// 1. Add custom currency
+// 2. Add reporting expense -> pdf
+// 3. Add confirmation when user want to delete expense
+// 4. Show note if any
+// 5. Number of hidden expense on dashboard
+// 6. Add another social login
+// 7. Create custom domain
+// -------------------------------------------------
+
 const store = configureStore();
 const jsx = (
 	<Provider store={store}>
