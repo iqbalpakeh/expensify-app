@@ -22,6 +22,7 @@ import LoadingPage from "./components/LoadingPage";
 // 5. Number of hidden expense on dashboard
 // 6. Add another social login
 // 7. Create custom domain
+// 8. Create android apps for expensify
 // -------------------------------------------------
 
 const store = configureStore();
